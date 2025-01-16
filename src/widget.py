@@ -18,6 +18,6 @@ def mask_account_card(user_data: str) -> str:
 
 def get_date(current_date: str) -> str:
     """Функция возвращает дату в формате ДД.ММ.ГГГГ"""
-    datetime_current_date = datetime.strptime(current_date,'%Y-%m-%d %H:%M:%S.%f')
-    format_current_date = datetime_current_date.strftime('%d.%m.%Y')
+    datetime_current_date = datetime.strptime(current_date, "%Y-%m-%d %H:%M:%S.%f")
+    format_current_date = datetime_current_date.strftime("%d.%m.%Y")
     return format_current_date
