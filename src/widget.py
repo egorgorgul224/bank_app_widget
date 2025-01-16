@@ -13,7 +13,7 @@ def mask_account_card(user_data: str) -> str:
             return f"{mask_info}{get_mask_account(account_data)}"
         else:
             mask_info += account_data + " "
-    return "Вы ввели неверный номер банковского счета"
+    return "Вы ввели неверный номер карты или банковского счета"
 
 
 def get_date(current_date: str) -> str:
