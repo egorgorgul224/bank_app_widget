@@ -5,15 +5,20 @@ from src.masks import get_mask_account, get_mask_card_number
 
 def mask_account_card(user_data: str) -> str:
     """Функция обрабатывает данные о карте или счете и маскирует номер"""
-    mask_info = ""
-    for account_data in user_data.split():
-        if account_data.isdigit() and len(account_data) == 16:
-            return f"{mask_info}{get_mask_card_number(account_data)}"
-        elif account_data.isdigit() and len(account_data) == 20:
-            return f"{mask_info}{get_mask_account(account_data)}"
-        else:
-            mask_info += account_data + " "
-    return "Вы ввели неверный номер карты или банковского счета"
+    user_data_list = user_data.split()
+
+    if user_data == "":
+        return "Вы ввели невереный номер карты или счет"
+
+    if user_data_list[0] == "Счет":
+        mask_info = get_mask_account(user_data_list[-1])
+    else:
+        mask_info = get_mask_card_number(user_data_list[-1])
+
+    if mask_info.replace(" ", "").isalpha():
+        return mask_info
+    else:
+        return f"{" ".join(user_data_list[:-1])} {mask_info}"
 
 
 def get_date(current_date: str) -> str:
