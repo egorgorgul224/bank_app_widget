@@ -37,9 +37,9 @@ def test_filter_by_state(dict_list: list[dict], state: str, expected_result: lis
         ),
     ],
 )
-def test_filter_by_default_state(
-    dict_list: list[dict], expected_result: list[dict], state: Optional[str] = "EXECUTED") -> None:
-    """Тест проверяет корректное возвращение списка словарей по переданному по умолчанию значению ключа state"""
+def test_filter_by_default_state(dict_list: list[dict], expected_result: list[dict],
+                                 state: Optional[str] = "EXECUTED") -> None:
+    """Тест проверяет корректное возвращение списка словарей по переданному значению ключа state по умолчанию"""
     assert filter_by_state(dict_list, state) == expected_result
 
 
