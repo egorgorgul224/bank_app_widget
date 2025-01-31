@@ -1,4 +1,3 @@
-from pickle import FALSE
 from typing import Optional
 
 import pytest
