@@ -1,6 +1,6 @@
 import pytest
 
-from src.widget import mask_account_card, get_date
+from src.widget import get_date, mask_account_card
 
 
 @pytest.mark.parametrize(
@@ -44,7 +44,7 @@ def test_mask_account_card_error(user_data: str, expected_result: str) -> None:
         ("2024-03-11T02:26:18.671407", "11.03.2024"),
         ("2022-05-25 02:26:18.671407", "25.05.2022"),
         ("25-05-2024T02:26:18.671407", "25.05.2024"),
-        ("25-Jan-2024 02:26:18.671407", "25.01.2024")
+        ("25-Jan-2024 02:26:18.671407", "25.01.2024"),
     ],
 )
 def test_get_date(current_date: str, expected_result: str) -> None:
@@ -54,11 +54,7 @@ def test_get_date(current_date: str, expected_result: str) -> None:
 
 @pytest.mark.parametrize(
     "current_date, expected_result",
-    [
-        ("", "Введена невереная дата"),
-        ("12032024", "Введена невереная дата")
-
-    ],
+    [("", "Введена невереная дата"), ("12032024", "Введена невереная дата")],
 )
 def test_get_date_error(current_date: str, expected_result: str) -> None:
     """Тест на вывод сообщения об ошибке, если передана неверная дата"""
