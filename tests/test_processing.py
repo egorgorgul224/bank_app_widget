@@ -46,7 +46,7 @@ def test_filter_by_default_state(
 
 def test_filter_by_state_empty() -> None:
     """Тест проверяет корректное возвращение списка словарей, если список словарей не передан"""
-    assert filter_by_state([{}]) == []
+    assert filter_by_state([{}]) == [{}]
 
 
 @pytest.mark.parametrize(
