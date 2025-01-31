@@ -56,6 +56,7 @@ def test_get_date(current_date: str, expected_result: str) -> None:
     "current_date, expected_result",
     [
         ("", "Введена невереная дата"),
+        ("12032024", "Введена невереная дата")
 
     ],
 )

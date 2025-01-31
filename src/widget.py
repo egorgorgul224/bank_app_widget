@@ -25,6 +25,7 @@ def mask_account_card(user_data: str) -> str:
 def get_date(current_date: str) -> str:
     """Функция возвращает дату в формате ДД.ММ.ГГГГ"""
 
+    format_current_date = ""
     date_format_list = ["%Y-%m-%d %H:%M:%S.%f", "%d-%m-%Y %H:%M:%S.%f", "%d-%B-%Y %H:%M:%S.%f", "%d-%b-%Y %H:%M:%S.%f"]
     replace_current_date = current_date.replace("T", " ")
 
@@ -38,4 +39,7 @@ def get_date(current_date: str) -> str:
         except ValueError:
             continue
 
+    if format_current_date == "":
+        return "Введена невереная дата"
+    else:
         return format_current_date
