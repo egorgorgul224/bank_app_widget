@@ -1,4 +1,5 @@
 from datetime import datetime
+from idlelib.replace import replace
 
 from src.masks import get_mask_account, get_mask_card_number
 
@@ -23,6 +24,18 @@ def mask_account_card(user_data: str) -> str:
 
 def get_date(current_date: str) -> str:
     """Функция возвращает дату в формате ДД.ММ.ГГГГ"""
-    datetime_current_date = datetime.strptime(current_date, "%Y-%m-%d %H:%M:%S.%f")
-    format_current_date = datetime_current_date.strftime("%d.%m.%Y")
-    return format_current_date
+
+    date_format_list = ["%Y-%m-%d %H:%M:%S.%f", "%d-%m-%Y %H:%M:%S.%f", "%d-%B-%Y %H:%M:%S.%f", "%d-%b-%Y %H:%M:%S.%f"]
+    replace_current_date = current_date.replace("T", " ")
+
+    if current_date == "":
+        return "Введена невереная дата"
+
+    for date_form in date_format_list:
+        try:
+            datetime_current_date = datetime.strptime(replace_current_date, date_form)
+            format_current_date = datetime_current_date.strftime("%d.%m.%Y")
+        except ValueError:
+            continue
+
+        return format_current_date
