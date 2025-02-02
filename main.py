@@ -6,7 +6,9 @@ from src.widget import get_date, mask_account_card
 card_number = input("Введите номер карты или счета: ")
 print(mask_account_card(card_number))
 
-print(get_date(str(datetime.today())))
+date_str = "2024-03-11T02:26:18.671407"
+print(get_date(date_str))
+# print(get_date(str(datetime.today())))
 
 print(
     filter_by_state(
