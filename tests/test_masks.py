@@ -25,14 +25,14 @@ def test_get_mask_card_number_error(card_number: str, expected_result: str) -> N
     assert get_mask_card_number(card_number) == expected_result
 
 
-# @pytest.mark.parametrize(
-#     "card_number",
-#     [(7000792289606361), ["7000792289606361", "7000635589606361"]],
-# )
-# def test_get_mask_card_number_wrong_type(card_number):
-#     """Тест на невереный тип входных данных"""
-#     with pytest.raises(TypeError):
-#         get_mask_card_number(card_number)
+@pytest.mark.parametrize(
+    "card_number",
+    [(7000792289606361), ["7000792289606361", "7000635589606361"]],
+)
+def test_get_mask_card_number_wrong_type(card_number: str) -> None:
+    """Тест на невереный тип входных данных"""
+    with pytest.raises(TypeError):
+        get_mask_card_number(card_number)
 
 
 @pytest.mark.parametrize(
@@ -57,11 +57,11 @@ def test_get_mask_account_error(account_number: str, expected_result: str) -> No
     assert get_mask_account(account_number) == expected_result
 
 
-# @pytest.mark.parametrize(
-#     "card_number",
-#     [(7000792289606361), ["7000792289606361", "7000635589606361"]],
-# )
-# def test_gget_mask_account_wrong_type(account_number):
-#     """Тест на невереный тип входных данных"""
-#     with pytest.raises(TypeError):
-#         get_mask_account(account_number)
+@pytest.mark.parametrize(
+    "account_number",
+    [(73654108430135874305), ["73654108430135874305", "73654108430135874356"]],
+)
+def test_get_mask_account_wrong_type(account_number: str) -> None:
+    """Тест на невереный тип входных данных"""
+    with pytest.raises(TypeError):
+        get_mask_account(account_number)

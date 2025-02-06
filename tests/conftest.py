@@ -2,7 +2,7 @@ import pytest
 
 
 @pytest.fixture
-def dict_list():
+def dict_list() -> list[dict]:
     return [
         {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
         {"id": 939719570, "state": "EXECUTED", "date": "2018-06-30T02:08:58.425572"},
@@ -12,7 +12,7 @@ def dict_list():
 
 
 @pytest.fixture
-def dict_list_with_same_date():
+def dict_list_with_same_date() -> list[dict]:
     return [
         {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
         {"id": 939719570, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
