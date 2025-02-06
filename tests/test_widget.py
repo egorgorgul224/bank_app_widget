@@ -39,6 +39,16 @@ def test_mask_account_card_error(user_data: str, expected_result: str) -> None:
 
 
 @pytest.mark.parametrize(
+    "user_data",
+    [353830334744478955602323],
+)
+def test_mask_account_card_wrong_type(user_data: str) -> None:
+    """Тест на невереный тип входных данных"""
+    with pytest.raises(TypeError):
+        mask_account_card(user_data)
+
+
+@pytest.mark.parametrize(
     "current_date, expected_result",
     [
         ("2024-03-11T02:26:18.671407", "11.03.2024"),
@@ -59,3 +69,13 @@ def test_get_date(current_date: str, expected_result: str) -> None:
 def test_get_date_error(current_date: str, expected_result: str) -> None:
     """Тест на вывод сообщения об ошибке, если передана неверная дата"""
     assert get_date(current_date) == expected_result
+
+
+@pytest.mark.parametrize(
+    "current_date",
+    [["2023-03-11T02:26:18.671407", "2024-11-12T03:26:44.671407"]],
+)
+def test_get_date_wrong_type(current_date: str) -> None:
+    """Тест на невереный тип входных данных"""
+    with pytest.raises(TypeError):
+        get_date(current_date)

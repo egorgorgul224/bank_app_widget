@@ -5,6 +5,10 @@ from src.masks import get_mask_account, get_mask_card_number
 
 def mask_account_card(user_data: str) -> str:
     """Функция обрабатывает данные о карте или счете и маскирует номер"""
+
+    if not isinstance(user_data, str):
+        raise TypeError("Ошибка типа данных")
+
     user_data_list = user_data.split()
 
     if user_data == "":
@@ -23,6 +27,9 @@ def mask_account_card(user_data: str) -> str:
 
 def get_date(current_date: str) -> str:
     """Функция возвращает дату в формате ДД.ММ.ГГГГ"""
+
+    if not isinstance(current_date, str):
+        raise TypeError("Ошибка типа данных")
 
     format_current_date = ""
     date_format_list = ["%Y-%m-%d %H:%M:%S.%f", "%d-%m-%Y %H:%M:%S.%f", "%d-%B-%Y %H:%M:%S.%f", "%d-%b-%Y %H:%M:%S.%f"]
