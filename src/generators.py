@@ -1,4 +1,4 @@
-from typing import Generator, Any
+from typing import Any, Generator
 
 
 def filter_by_currency(transactions_list: list[dict], currency: str) -> Generator[dict]:
@@ -17,3 +17,12 @@ def transaction_descriptions(transactions_list: list[dict]) -> Generator[Any]:
 
     for transaction in transactions_list:
         yield transaction.get("description")
+
+
+def card_number_generator(start_number: int, final_number: int) -> Generator[str]:
+    """Функция принимает начальное и конечное значение карты и генерирует список карт с номерами в диапазоне
+    в формате XXXX XXXX XXXX XXXX, где X — цифра номера карты"""
+
+    for number in range(start_number, final_number + 1):
+        number_generator = "%016d" % number
+        yield f"{number_generator[0:4]} {number_generator[4:8]} {number_generator[8:12]} {number_generator[-4:]}"
