@@ -5,21 +5,15 @@ def filter_by_currency(transactions_list: list[dict], currency: str) -> Generato
     """Функция принимает список транзакций и возвращает итератор с транзакциями по указанному курсу"""
 
     for transaction in transactions_list:
-        try:
-            if transaction.get("operationAmount", {}).get("currency", {}).get("name") == currency:
-                yield transaction
-        except StopIteration:
-            continue
+        if transaction.get("operationAmount", {}).get("currency", {}).get("name") == currency:
+            yield transaction
 
 
 def transaction_descriptions(transactions_list: list[dict]) -> Generator[Any]:
     """Функция принимает список транзакций и возвращает описание операций по очереди"""
 
     for transaction in transactions_list:
-        try:
-            yield transaction.get("description")
-        except StopIteration:
-            continue
+        yield transaction.get("description")
 
 
 def card_number_generator(start: int, stop: int) -> Generator[str]:
