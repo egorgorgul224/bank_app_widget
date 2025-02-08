@@ -2,7 +2,7 @@ from typing import Any, Generator
 
 
 def filter_by_currency(transactions_list: list[dict], currency: str) -> Generator[dict]:
-    """Функция принимает список транзакций и возвращает итератор с транзакциями по указанному курсу"""
+    """Функция принимает список транзакций и возвращает генератор с транзакциями по указанному курсу валют"""
 
     for transaction in transactions_list:
         if transaction.get("operationAmount", {}).get("currency", {}).get("name") == currency:

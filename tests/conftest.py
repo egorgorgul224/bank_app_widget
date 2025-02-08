@@ -46,7 +46,7 @@ def transactions_list() -> list[dict]:
             "id": 342260201,
             "state": "EXECUTED",
             "date": "2018-09-09T10:10:05.206878",
-            "operationAmount": {"amount": "79114.93", "currency": {"name": "RUB", "code": "RUB"}},
+            "operationAmount": {"amount": "79114.93", "currency": {"name": "руб", "code": "RUB"}},
             "description": "Перевод со счета на счет",
             "from": "Счет 20008645453227558542",
             "to": "Счет 75651667383060283409",
