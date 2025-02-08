@@ -16,12 +16,21 @@ def transaction_descriptions(transactions_list: list[dict]) -> Generator[Any]:
     """Функция принимает список транзакций и возвращает описание операций по очереди"""
 
     for transaction in transactions_list:
-        yield transaction.get("description")
+        try:
+            yield transaction.get("description")
+        except StopIteration:
+            continue
 
 
 def card_number_generator(start: int, stop: int) -> Generator[str]:
     """Функция принимает начальное и конечное значение карты и генерирует список карт с номерами в диапазоне
     в формате XXXX XXXX XXXX XXXX, где X — цифра номера карты"""
+
+    # if start > stop:
+    #     start = stop
+    #     stop = start + 1
+    if start > stop or start < 1 or stop > 9999999999999999:
+        yield "Вы ввели некореткный диапозон"
 
     for number in range(start, stop + 1):
         number_generator = "%016d" % number
