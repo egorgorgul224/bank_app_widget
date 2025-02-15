@@ -1,11 +1,14 @@
-def log(filename: str = ""):
+from typing import Callable, Any, Union
+
+
+def log(filename: str = "") -> Callable[[Callable[..., Any]], Callable[..., Any]]:
     """Декоратор возвращает лог с названием функции и результатом, если функция отрабатывает корректно.
     Если функция отрабатывает некорректно, то лог возвращает название функции, ошибку и входные данные.
     Лог отправляется в текстовый файл, если файл передан в параметр, иначе выводит лог в консоль."""
 
-    def sum_args(func):
+    def sum_args(func: Callable[..., Any]) -> Callable[..., Any]:
 
-        def wrapper(*args):
+        def wrapper(*args: Any) -> Any:
             try:
                 result = func(*args)
                 message = f"{func.__name__} ok. Result: {result}."
@@ -31,7 +34,7 @@ def log(filename: str = ""):
 
 
 @log()
-def my_function(x, y):
+def my_function(x: Union[int, float], y: Union[int, float]) -> Union[int, float]:
     return x / y
 
 
