@@ -21,5 +21,5 @@ def get_transactions_list(path_to_file: str) -> list[dict]:
         return []
 
 
-if __name__ == "__main__":
-    print(get_transactions_list("data\operations"))
+# if __name__ == "__main__":
+#     print(get_transactions_list("data\operations"))
