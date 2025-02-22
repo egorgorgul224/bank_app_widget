@@ -16,6 +16,7 @@ def conversion_to_ruble(from_currency: str, operation_amount: str) -> float:
     response = requests.request("GET", url, headers=headers, data=payload)
 
     if response.status_code != 200:
+        # raise ValueError("Failed to get currency rate or operation_amount")
         return False
 
     result = response.json()
