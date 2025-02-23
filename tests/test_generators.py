@@ -73,17 +73,6 @@ def test_card_number_generator(start: int, stop: int) -> None:
     assert next(result) == "0000 0000 0000 0011"
 
 
-# @pytest.mark.parametrize(
-#     "start, stop",
-#     [(5, 4)],
-# )
-# def test_card_number_generator_swap_range(start: int, stop: int) -> None:
-#     """Тест проверяет корректный вывод номеров карт в заданном диапазоне"""
-#     result = card_number_generator(start, stop)
-#     assert next(result) == "0000 0000 0000 0004"
-#     assert next(result) == "0000 0000 0000 0005"
-
-
 @pytest.mark.parametrize(
     "start, stop",
     [(0, 1)],

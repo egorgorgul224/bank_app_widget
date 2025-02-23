@@ -1,4 +1,4 @@
-from typing import Callable, Any, Union
+from typing import Any, Callable, Union
 
 
 def log(filename: str = "") -> Callable[[Callable[..., Any]], Callable[..., Any]]:
