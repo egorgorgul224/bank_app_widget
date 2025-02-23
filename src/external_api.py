@@ -16,7 +16,6 @@ def conversion_to_ruble(from_currency: str, operation_amount: str) -> float:
     response = requests.request("GET", url, headers=headers, data=payload)
 
     if response.status_code != 200:
-        # raise ValueError("Failed to get currency rate or operation_amount")
         return False
 
     result = response.json()
@@ -40,16 +39,3 @@ def get_transaction_amount(operation_data: dict) -> float:
         conversion_amount = conversion_to_ruble(transaction_currency, transaction_amount)
 
         return conversion_amount
-
-
-# if __name__ == "__main__":
-#     operation = {
-#         "id": 441945886,
-#         "state": "EXECUTED",
-#         "date": "2019-08-26T10:50:58.294041",
-#         "operationAmount": {"amount": "100", "currency": {"name": "руб.", "code": "USD"}},
-#         "description": "Перевод организации",
-#         "from": "Maestro 1596837868705199",
-#         "to": "Счет 64686473678894779589",
-#     }
-#     print(get_transaction_amount(operation))

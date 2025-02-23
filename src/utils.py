@@ -19,7 +19,3 @@ def get_transactions_list(path_to_file: str) -> list[dict]:
     except FileNotFoundError:
         print(f"Файл {path_to_file}.json не найден")
         return []
-
-
-# if __name__ == "__main__":
-#     print(get_transactions_list("data\operations"))
