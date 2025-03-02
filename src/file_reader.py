@@ -28,8 +28,3 @@ def excel_file_reader(path_file: str) -> list[dict]:
         return []
 
     return operations_data
-
-
-if __name__ == "__main__":
-    # print(csv_file_reader("transaction.csv"))
-    print(excel_file_reader("transactions_excel.xlsx"))
