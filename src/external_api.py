@@ -28,7 +28,6 @@ def get_transaction_amount(operation_data: dict) -> float:
     происходит обращение к внешнему API для получения текущего курса валют и конвертации суммы операции в рубли."""
 
     if operation_data["operationAmount"]["currency"]["code"] == "RUB":
-        # amount_data = f"Сумма транзакции: {float(operation_data["operationAmount"]["amount"])} руб."
         amount_data = float(operation_data["operationAmount"]["amount"])
 
         return amount_data

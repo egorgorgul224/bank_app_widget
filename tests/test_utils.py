@@ -39,7 +39,7 @@ def test_get_transactions_list_arg_not_list() -> None:
 
 @patch("builtins.open", new_callable=mock_open)
 @patch("json.load", side_effect=json.JSONDecodeError("Expecting value", "", 0))
-def test_get_transactions_list_json_error(mock_json_load, mock_open):
+def test_get_transactions_list_json_error(mock_json_load, mock_open) -> None:
     """Тест проверяет корректную обработку ошибки JSONDecodeError"""
 
     result = get_transactions_list("fake_path")
@@ -50,7 +50,7 @@ def test_get_transactions_list_json_error(mock_json_load, mock_open):
 
 @patch("builtins.open", new_callable=mock_open)
 @patch("json.load", side_effect=FileNotFoundError("Expecting value", "", 0))
-def test_get_transactions_list_file_not_found_error(mock_json_load, mock_open):
+def test_get_transactions_list_file_not_found_error(mock_json_load, mock_open) -> None:
     """Тест проверяет корректную обработку ошибки FileNotFoundError, когда файл не найден"""
 
     result = get_transactions_list("fake_path")

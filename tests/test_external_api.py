@@ -65,7 +65,7 @@ def test_get_transaction_amount_not_rub(mocked_get) -> None:
 
 
 @patch("requests.request")
-def test_conversion_to_ruble(mocked_get):
+def test_conversion_to_ruble(mocked_get) -> None:
     """Тест проверяет корректный вывод суммы транзакции, переведенной из валюты(отличной от RUB) в рубли RUB"""
 
     load_dotenv()
@@ -89,7 +89,7 @@ def test_conversion_to_ruble(mocked_get):
 
 
 @patch("requests.request")
-def test_get_user_info_invalid(mocked_get):
+def test_get_user_info_invalid(mocked_get) -> None:
     """Тест проверяет корректную обработку случая, когда status code запроса не успешен(не равен 200)"""
 
     mocked_get.return_value.json.return_value = {"message": "Not Found"}
