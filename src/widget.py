@@ -32,7 +32,13 @@ def get_date(current_date: str) -> str:
         raise TypeError("Ошибка типа данных")
 
     format_current_date = ""
-    date_format_list = ["%Y-%m-%d %H:%M:%S.%f", "%d-%m-%Y %H:%M:%S.%f", "%d-%B-%Y %H:%M:%S.%f", "%d-%b-%Y %H:%M:%S.%f"]
+    date_format_list = [
+        "%Y-%m-%d %H:%M:%S.%f",
+        "%Y-%m-%d %H:%M:%SZ",
+        "%d-%m-%Y %H:%M:%S.%f",
+        "%d-%B-%Y %H:%M:%S.%f",
+        "%d-%b-%Y %H:%M:%S.%f",
+    ]
     replace_current_date = current_date.replace("T", " ")
 
     if current_date == "":
