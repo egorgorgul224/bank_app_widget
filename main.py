@@ -38,11 +38,9 @@ def main() -> Union[list[dict], str]:
         else:
             print("Выберите пункт 1-3 из меню")
 
-    for operation_desc in operations_list:
-        if operation_desc.get("description") not in description_list:
-            description_list.append(operation_desc.get("description"))
-        if operation_desc.get("state") not in operations_status_format:
-            operations_status_format.append(operation_desc.get("state"))
+    for operation_state in operations_list:
+        if operation_state.get("state") not in operations_status_format:
+            operations_status_format.append(operation_state.get("state"))
 
     while True:
         user_status_choice = input(
@@ -61,15 +59,17 @@ def main() -> Union[list[dict], str]:
         user_filter_data_choice = input("""Отсортировать операции по дате? Да/Нет\n""")
 
         if user_filter_data_choice.lower() == "да":
-            user_filter_data_sort_choice = input("""Отсортировать по возрастанию или по убыванию?\n""")
-            if user_filter_data_sort_choice.lower() == "по возрастанию":
+            user_filter_data_sort_choice = input(
+                """Отсортировать по возрастанию (Введите 0) или по убыванию (Введите 1)?\n"""
+            )
+            if user_filter_data_sort_choice.lower() == "0":
                 sorted_operations = sort_by_date(filter_operations, False)
                 break
-            elif user_filter_data_sort_choice.lower() == "по убыванию":
+            elif user_filter_data_sort_choice.lower() == "1":
                 sorted_operations = sort_by_date(filter_operations)
                 break
             else:
-                print("Необходимо выбрать: по возрастанию/по убыванию")
+                print("Необходимо выбрать: по возрастанию (Введите 0) / по убыванию (Введите 1)")
         elif user_filter_data_choice.lower() == "нет":
             sorted_operations = filter_operations
             break
@@ -83,10 +83,13 @@ def main() -> Union[list[dict], str]:
             break
         elif user_currency_choice.lower() == "нет":
             sorted_cur_operations = sorted_operations
-
             break
         else:
             print("Выберите: Да/Нет")
+
+    for operation_desc in sorted_cur_operations:
+        if operation_desc.get("description") not in description_list:
+            description_list.append(operation_desc.get("description"))
 
     while True:
         user_search_choice = input("""Отфильтровать список транзакций по определенному слову в описании? Да/Нет\n""")
@@ -96,7 +99,7 @@ def main() -> Union[list[dict], str]:
                 f"""Введите слово или фразу целиком.
 Доступные фразы: {description_list[:-1]}\n"""
             )
-            search_operations = find_data_request(sorted_cur_operations, user_request_choice.lower().capitalize())
+            search_operations = find_data_request(sorted_cur_operations, user_request_choice)
             if search_operations:
                 break
             else:
@@ -107,7 +110,7 @@ def main() -> Union[list[dict], str]:
         else:
             print("Выберите: Да/Нет")
 
-    print("Распечатываю итоговый список транзакций...\n")
+    print("\nРаспечатываю итоговый список транзакций...\n")
 
     print(f"Всего банковских операций в выборке: {len(search_operations)}\n")
 
@@ -120,7 +123,7 @@ def main() -> Union[list[dict], str]:
             operation_mask_to = mask_account_card(str(operation.get("to")))
             if user_file_choice == "1":
                 operation_amount = operation.get("operationAmount", {}).get("amount", {})
-                operation_currency = operation.get("operationAmount", {}).get("currency", {}).get("code", {})
+                operation_currency = operation.get("operationAmount", {}).get("currency", {}).get("code")
             else:
                 operation_amount = operation.get("amount")
                 operation_currency = operation.get("currency_code")

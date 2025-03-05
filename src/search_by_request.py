@@ -11,8 +11,7 @@ def find_data_request(operations: list[dict], user_request: str = "") -> list[di
 
     if operations and user_request:
         for operation in operations:
-            pattern = re.compile(rf"{format_user_request}")
-            matches = pattern.findall(str(operation.get("description")))
+            matches = re.findall(rf"{format_user_request}", str(operation.get("description")), flags=re.IGNORECASE)
             if matches:
                 request_list.append(operation)
 
